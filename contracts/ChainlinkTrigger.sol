@@ -5,6 +5,7 @@ import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import "./utils/FixedPointMathLib.sol";
 
 import "./abstract/BaseTrigger.sol";
+import "hardhat/console.sol";
 
 /**
  * @notice A trigger contract that takes two addresses: a truth oracle and a tracking oracle.

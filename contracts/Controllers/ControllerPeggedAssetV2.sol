@@ -382,7 +382,9 @@ contract ControllerPeggedAssetV2 {
             _marketId
         );
 
-        IChainlinkTrigger(trigger).updateTriggerState();
+        MarketState state = getTriggerState(_marketId);
+
+        IChainlinkTrigger(trigger).updateTriggerState(state);
     }
 
     function getTriggerState(
@@ -391,7 +393,8 @@ contract ControllerPeggedAssetV2 {
         address trigger = chainlinkTriggerFactory.getTriggerByMarketId(
             _marketId
         );
-        return IChainlinkTrigger(trigger).runProgrammaticCheck();
+        MarketState state = IChainlinkTrigger(trigger).runProgrammaticCheck();
+        return state;
     }
 
     function getTriggerPrice(uint256 _marketId) public view returns (uint256) {
