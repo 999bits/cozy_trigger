@@ -5,6 +5,7 @@ import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import "./interfaces/IChainlinkTriggerFactory.sol";
 import "./ChainlinkTrigger.sol";
 import "./FixedPriceAggregator.sol";
+import "hardhat/console.sol";
 
 /**
  * @notice Deploys Chainlink triggers that ensure two oracles stay within the given price
@@ -47,6 +48,7 @@ contract ChainlinkTriggerFactory is IChainlinkTriggerFactory {
     /// have for the truth oracle. See ChainlinkTrigger.truthFrequencyTolerance() for more information.
     /// @param _trackingFrequencyTolerance The frequency tolerance that the deployed trigger will
     /// have for the tracking oracle. See ChainlinkTrigger.trackingFrequencyTolerance() for more information.
+    /// @param _marketId marketId
     /// @param _metadata See TriggerMetadata for more info.
     function deployTrigger(
         AggregatorV3Interface _truthOracle,
@@ -87,9 +89,7 @@ contract ChainlinkTriggerFactory is IChainlinkTriggerFactory {
             )
         );
 
-        if (marketIdToTriggers[_marketId] != address(0)) {
-            marketIdToTriggers[_marketId] = address(_trigger);
-        }
+        marketIdToTriggers[_marketId] = address(_trigger);
 
         emit TriggerDeployed(
             address(_trigger),
@@ -118,6 +118,7 @@ contract ChainlinkTriggerFactory is IChainlinkTriggerFactory {
     /// have. See ChainlinkTrigger.priceTolerance() for more information.
     /// @param _frequencyTolerance The frequency tolerance that the deployed trigger will
     /// have for the tracking oracle. See ChainlinkTrigger.trackingFrequencyTolerance() for more information.
+    /// @param _marketId marketId
     /// @param _metadata See TriggerMetadata for more info.
     function deployTrigger(
         int256 _price,

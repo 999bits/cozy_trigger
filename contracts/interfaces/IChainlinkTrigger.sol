@@ -63,7 +63,9 @@ interface IChainlinkTrigger {
     /// required state changes both in the trigger and the sets.
     function runProgrammaticCheck() external view returns (MarketState);
 
-    function updateTriggerState() external returns (MarketState);
+    function updateTriggerState(
+        MarketState state
+    ) external returns (MarketState);
 
     /// @notice Returns true if the trigger has been acknowledged by the entity responsible for transitioning trigger
     /// state.
