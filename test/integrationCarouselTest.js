@@ -303,6 +303,8 @@ describe( "Y2K Earthquake V2" , function () {
         expect(await premiumContract.balanceOf(USER2.address, nextEpochId)).to.be.equal(0);
         expect(await collateralContract.balanceOf(USER.address, nextEpochId)).to.be.equal(0);
         expect(await collateralContract.balanceOf(USER2.address, nextEpochId)).to.be.equal(0);
+
+        console.log("collateralNextTotalBalance", collateralNextTotalBalance);
         
     })
 
