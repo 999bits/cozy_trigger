@@ -259,8 +259,8 @@ describe( "Y2K Earthquake V2" , function () {
 
         expect(await depegPremiumContract.balanceOf(USER.address, depegEpochId)).to.be.equal(0);
         expect(await depegCollateralContract.balanceOf(USER.address, depegEpochId)).to.be.equal(0);
-        console.log(await depegPremiumContract.balanceOf(USER.address, depegEpochId));
-        console.log(await depegCollateralContract.balanceOf(USER.address, depegEpochId));
+        // console.log(await depegPremiumContract.balanceOf(USER.address, depegEpochId));
+        // console.log(await depegCollateralContract.balanceOf(USER.address, depegEpochId));
         
     })
 
@@ -283,8 +283,8 @@ describe( "Y2K Earthquake V2" , function () {
 
         const premiumNullStatus = await premiumContract.connect(USER).epochNull(epochId);
         const collateralNullStatus = await collateralContract.connect(USER).epochNull(epochId);
-        console.log("premiumNullStatus", premiumNullStatus)
-        console.log("collateralNullStatus", collateralNullStatus)
+        // console.log("premiumNullStatus", premiumNullStatus)
+        // console.log("collateralNullStatus", collateralNullStatus)
 
 
         
