@@ -1,4 +1,4 @@
-# Y2K-Earthquake-v2-cozy-trigger
+# cozy-trigger
 
 Combine cozy trigger logic into y2k earthquake
 
